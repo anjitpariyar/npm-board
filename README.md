@@ -33,6 +33,8 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 
   - `returns` a object of block that you've written
 
+* `<TableBoard />` - table component contain table style and pagination
+
 * `<SayHello />`
 
   - It's just a test function
@@ -81,6 +83,8 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 ```
 
 ## Examples
+
+### example of using RichTextEditor
 
 ```
 import styled from "styled-components";
