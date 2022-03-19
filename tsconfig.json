@@ -16,8 +16,7 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true
+    "declarationMap": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "lib"]
