@@ -1,7 +1,5 @@
 /// <reference types="react" />
-declare const Goto: ({ totalPageCount, onPageChange, }: {
-    totalPageCount: number;
-    onPageChange: (page: number) => void;
-}) => JSX.Element;
+import { GotoProps } from "../interfaces";
+declare const Goto: ({ data, onPageChange, pageSize }: GotoProps) => JSX.Element;
 export default Goto;
 //# sourceMappingURL=Goto.d.ts.map

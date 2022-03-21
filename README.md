@@ -37,6 +37,8 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 
 * `<Search />` - A Search form for the table
 
+* `<Goto />` - A Search input number to jump page
+
 * `<SayHello />`
 
   - It's just a test function

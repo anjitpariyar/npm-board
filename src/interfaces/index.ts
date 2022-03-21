@@ -55,3 +55,9 @@ export interface SearchProps {
   buttonText?: string | ReactNode;
   onFinish: (searchText: string) => void;
 }
+
+export interface GotoProps {
+  data: any[];
+  onPageChange: (page: number) => void;
+  pageSize: number;
+}

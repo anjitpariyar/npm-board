@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { GotoProps } from "../interfaces";
 
-const Goto = ({
-  totalPageCount,
-  onPageChange,
-}: {
-  totalPageCount: number;
-  onPageChange: (page: number) => void;
-}) => {
-  const [page, setPage] = useState("");
-
-  const onChange = (event: any) => {
-    setPage(event.target.value);
+const Goto = ({ data, onPageChange, pageSize }: GotoProps) => {
+  // @ts-ignore
+  const totalPageCount: number = parseInt(data.length, 10) / pageSize;
+  const [page, setPage] = useState<number | string | any>("");
+  const onChange = ({ target: { value } }: { target: { value: string } }) => {
+    if (value) setPage(parseInt(value, 10));
   };
 
   useEffect(() => {
-    if (page && parseInt(page) <= totalPageCount) {
-      onPageChange(parseInt(page));
+    if (page && page <= totalPageCount) {
+      onPageChange(page);
     }
   }, [page]);
 
