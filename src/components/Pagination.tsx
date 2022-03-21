@@ -22,7 +22,7 @@ const Pagination = ({
   totalData,
   prev = <span>{"<"}</span>,
   next = <span>{">"}</span>,
-  // paginationSize = 5,
+  paginationSize = 5,
   trimmer = true,
   goto = true,
 }: PaginationOptions) => {
@@ -36,6 +36,7 @@ const Pagination = ({
   });
 
   const { totalPageCount } = Instance;
+  const [trimmerState, setTrimmerState] = useState(trimmer);
 
   //options
   // color = "#000",
@@ -70,17 +71,25 @@ const Pagination = ({
     setRange([...tempRange]);
   }, [currentPage, totalPageCount]);
 
+  useEffect(() => {
+    if (totalPageCount <= paginationSize) {
+      setTrimmerState(false);
+    }
+  }, [totalPageCount]);
+
   return (
     <>
       <Ul>
-        <Button
-          disabled={currentPage === 1}
-          onClick={() => PrevFunc()}
-          key="-1"
-        >
-          {prev}
-        </Button>
-        {trimmer ? (
+        {totalPageCount > 1 && (
+          <Button
+            disabled={currentPage === 1}
+            onClick={() => PrevFunc()}
+            key="-1"
+          >
+            {prev}
+          </Button>
+        )}
+        {trimmerState ? (
           <>
             <Li
               key={0}
@@ -125,13 +134,15 @@ const Pagination = ({
             );
           })
         )}
-        <Button
-          disabled={currentPage === totalPageCount}
-          onClick={() => NextFunc()}
-          key={totalPageCount + 10}
-        >
-          {next}
-        </Button>
+        {totalPageCount > 1 && (
+          <Button
+            disabled={currentPage === totalPageCount}
+            onClick={() => NextFunc()}
+            key={totalPageCount + 10}
+          >
+            {next}
+          </Button>
+        )}
       </Ul>
       {goto && (
         <Goto totalPageCount={totalPageCount} onPageChange={onPageChange} />
