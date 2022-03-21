@@ -35,6 +35,8 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 
 * `<TableBoard />` - table component contain table style and pagination
 
+* `<Search />` - A Search form for the table
+
 * `<SayHello />`
 
   - It's just a test function
@@ -82,6 +84,16 @@ npm i board-lukuku draft-js react-draft-wysiwyg
     loading: () => <p>...</p>,
   }
   );
+
+  // component Searche
+   const Search = dynamic(
+  () => import("board-lukuku").then((mod) => mod.Search),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+  );
+
   ```
 
   ## Usages
@@ -93,6 +105,11 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 
     <SayHello name="kjkhkj" />
     <RichEditor handleContent={handleEditorContent} />
+    <Search
+      placeholder="Search"
+      buttonText={<span>Search</span>}
+      onFinish
+    />
 ```
 
 ## Examples
@@ -327,5 +344,23 @@ const IndexPage = () => {
 
 export default IndexPage;
 
+
+```
+
+### example of using Search
+
+```
+ // search Form submit
+  const onFinish = (searchText) => {
+    router.push(`/?keyword=${searchText}`, undefined, { shallow: true });
+  };
+
+  <div style={{ margin: "2em 0" }}>
+          <Search
+            placeholder="Search"
+            buttonText={<span>Search</span>}
+            onFinish={onFinish}
+          />
+        </div>
 
 ```

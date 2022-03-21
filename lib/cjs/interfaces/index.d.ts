@@ -39,4 +39,9 @@ export interface paginationStyleProps {
     align?: string;
     customStyle?: string;
 }
+export interface SearchProps {
+    placeholder?: string;
+    buttonText?: string | ReactNode;
+    onFinish: (searchText: string) => void;
+}
 //# sourceMappingURL=index.d.ts.map
