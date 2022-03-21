@@ -2,6 +2,10 @@
 
 - A simple library for team lukuku
 
+- Example Repo [Github ](https://github.com/anjitpariyar/nextjs-boilterplate)
+
+- Example Link
+
 ## Requirement
 
 - "react": "^17.0.2",
@@ -38,6 +42,8 @@ npm i board-lukuku draft-js react-draft-wysiwyg
 * `<Search />` - A Search form for the table
 
 * `<Goto />` - A Search input number to jump page
+
+* `<Details />` - for your product single page
 
 * `<SayHello />`
 
@@ -87,9 +93,36 @@ npm i board-lukuku draft-js react-draft-wysiwyg
   }
   );
 
-  // component Searche
+  // component Search
    const Search = dynamic(
   () => import("board-lukuku").then((mod) => mod.Search),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+  );
+
+   // component Goto
+   const Goto = dynamic(
+  () => import("board-lukuku").then((mod) => mod.Goto),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+  );
+
+  // component Details
+   const Details = dynamic(
+  () => import("board-lukuku").then((mod) => mod.Details),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+  );
+
+  // component CommentsWrapper
+   const CommentsWrapper = dynamic(
+  () => import("board-lukuku").then((mod) => mod.CommentsWrapper),
   {
     ssr: false,
     loading: () => <p>...</p>,
@@ -112,6 +145,15 @@ npm i board-lukuku draft-js react-draft-wysiwyg
       buttonText={<span>Search</span>}
       onFinish
     />
+     <Goto
+          data={sampleTablePropsData}
+          onPageChange={onPageChange}
+          pageSize={10}
+        />
+
+      <Details pid={pid} />
+
+      <CommentsWrapper datas={datas} />
 ```
 
 ## Examples

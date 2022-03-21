@@ -61,3 +61,9 @@ export interface GotoProps {
   onPageChange: (page: number) => void;
   pageSize: number;
 }
+
+export interface CommentsWrapperProps {
+  datas: any[];
+  CommentForm: any;
+  CommentBox: any;
+}
