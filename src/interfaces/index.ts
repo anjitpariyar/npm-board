@@ -67,3 +67,15 @@ export interface CommentsWrapperProps {
   CommentForm: any;
   CommentBox: any;
 }
+
+export interface CommentsBoardData {
+  data: any;
+  pageSize?: number;
+  activePage?: number;
+  prev?: ReactNode;
+  next?: ReactNode;
+  onPageChange: (page: number) => void;
+  page: number | undefined;
+  CommentBox: any;
+  CommentForm: any;
+}
