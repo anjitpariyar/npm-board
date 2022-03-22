@@ -19,7 +19,7 @@ const CommentsWrapper = ({
           return (
             <CommentBox
               {...data}
-              key={index.toString() + data?.date}
+              key={index.toString() + data?.date + data?.id}
               openComment={openComment}
               commentId={commentId}
             />
